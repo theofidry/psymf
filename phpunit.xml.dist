@@ -18,7 +18,7 @@
 
     <logging>
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" />
-        <log type="coverage-clover" target="dist/reports/phpunit/clover.xml" />
+        <log type="coverage-clover" target="coverage.xml" />
     </logging>
 
     <testsuites>
