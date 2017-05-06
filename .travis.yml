@@ -2,7 +2,11 @@ language: php
 
 cache:
     directories:
-        - $HOME/.composer/cache
+        - $HOME/.composer/cache/files
+
+branches:
+  only:
+    - master
 
 php:
     - '5.6'
