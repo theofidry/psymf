@@ -26,10 +26,11 @@ Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/R
 
 1. [Install](#install)
 1. [Usage](#usage)
-1. [PsySH as a debugger](doc/debugger.md)
-1. [Reflect like a boss](doc/reflect.md)
-1. [PsySH for breakpoints](doc/breakpoint.md)
+    1. [PsySH as a debugger](doc/debugger.md)
+    1. [Reflect like a boss](doc/reflect.md)
+    1. [PsySH for breakpoints](doc/breakpoint.md)
 1. [Customize PsySH](#customize-psysh)
+1. [Credits](#credits)
 
 
 ## Install
@@ -67,9 +68,15 @@ php app/console psysh
 or
 
 ```php
-// Somewhere in your Symfony app
+use function Fidry\PsyshBundle\psysh
 
-psysh()
+class X
+{
+    function foo()
+    {
+        psysh(get_defined_vars(), $this);   // Debug with the current context
+    }
+}
 ```
 
 ![PsySH Shell](doc/images/shell.png)
@@ -79,7 +86,6 @@ psysh()
 
 ## Customize PsySH
 
-# Customize PsySH
 
 You may also want to add a custom command or change the parameters. To achieve that, simply override the
 `psysh.shell` service declaration:
