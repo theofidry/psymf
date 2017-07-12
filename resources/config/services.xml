@@ -11,7 +11,7 @@
             </call>
         </service>
 
-        <service id="psysh.shell" class="Psy\Shell">
+        <service id="psysh.shell" class="Psy\Shell" public="false">
             <argument type="service" id="psysh.config" />
             <call method="setScopeVariables">
                 <argument type="collection">
