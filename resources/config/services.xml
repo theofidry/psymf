@@ -13,16 +13,6 @@
 
         <service id="psysh.shell" class="Psy\Shell" public="false">
             <argument type="service" id="psysh.config" />
-            <call method="setScopeVariables">
-                <argument type="collection">
-                    <argument key="container" type="service" id="service_container" />
-                    <argument key="kernel" type="service" id="kernel" />
-                    <argument key="parameters" type="expression">
-                        service('service_container').getParameterBag().all()
-                    </argument>
-                    <argument key="self" type="service" id="psysh.shell" />
-                </argument>
-            </call>
         </service>
 
         <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand">
