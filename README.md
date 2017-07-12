@@ -84,8 +84,33 @@ class X
 
 ## Customize PsySH
 
+### Adding a custom command
+Adding a custom command for PsySH is as simple as defining a service with `psysh.command` tag!
 
-You may also want to add a custom command or change the parameters. To achieve that, simply override the
+```yaml
+services:
+    my_psysh_command:
+        class: Acme\Shell\MyCommand
+        tags:
+            - { name: psysh.command }
+```
+
+Or even simpler if you use Symfony 3.3+:
+
+```yaml
+services:
+    _defaults:
+        autonfigure: true
+        autowire: true
+        public: false
+
+    Acme\Shell\MyCommand: ~
+```
+
+> PsyshBundle provides autoconfiguration for custom Psysh command services, as long as they inherit from
+> `Psy\Command\ReflectingCommand` or `Psy\Command\Command`.
+
+You may also want to change the parameters. To achieve that, simply override the
 `psysh.shell` service declaration:
 
 ```yaml

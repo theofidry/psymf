@@ -11,6 +11,7 @@
 
 namespace Fidry\PsyshBundle\DependencyInjection;
 
+use Psy\Command\Command;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -32,5 +33,10 @@ final class PsyshExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../../resources/config'));
         $loader->load('services.xml');
+        
+        // Register Psysh commands for service autoconfiguration (Symfony 3.3+)
+        if (method_exists($container, 'registerForAutoconfiguration')) {
+            $container->registerForAutoconfiguration(Command::class)->addTag('psysh.command');
+        }
     }
 }

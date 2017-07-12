@@ -11,8 +11,10 @@
 
 namespace Fidry\PsyshBundle;
 
-use Fidry\PsyshBundle\PsyshFacade;
-use Psy\Shell;
+use Fidry\PsyshBundle\DependencyInjection\Compiler\AddPsyshCommandPass;
+use Psy\Command\Command;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -28,4 +30,11 @@ final class PsyshBundle extends Bundle
         $this->container->get('psysh.facade');
     }
 
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        // Ensure that AddPsyshCommandPass runs before AddConsoleCommandPass to avoid autoconfiguration conflicts.
+        $container->addCompilerPass(new AddPsyshCommandPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 10);
+    }
 }
