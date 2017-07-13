@@ -20,8 +20,10 @@ use Symfony\Component\DependencyInjection\Reference;
  * Compiler pass allowing to add Psysh commands dynamically
  *
  * @author Jérôme Vieilledent <jerome@vieilledent.fr>
+ *
+ * @private
  */
-class AddPsyshCommandPass implements CompilerPassInterface
+final class AddPsyshCommandPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
@@ -37,7 +39,6 @@ class AddPsyshCommandPass implements CompilerPassInterface
             $container->findDefinition($id)->clearTag('console.command');
             $commands[] = new Reference($id);
         }
-
 
         $shellRef = $container->findDefinition('psysh.shell');
         $shellRef->addMethodCall('addCommands', [$commands]);
