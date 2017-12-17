@@ -13,8 +13,8 @@
 // Debug only
 set_time_limit(0);
 require_once __DIR__.'/../vendor/autoload.php';
-require_once __DIR__.'/../tests/Functional/AppKernel.php';
 
+use Fidry\PsyshBundle\Functional\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Debug\Debug;
