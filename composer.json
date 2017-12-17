@@ -15,15 +15,18 @@
             "homepage": "https://github.com/theofidry"
         }
     ],
+
     "require": {
-        "psy/psysh": "~0.3",
-        "symfony/expression-language": "^3.2 || ^4.0",
-        "symfony/framework-bundle": "~2.3|~3.0|~4.0"
+        "php": "^7.1",
+        "psy/psysh": "^0.8",
+        "symfony/expression-language": "^3.4 || ^4.0",
+        "symfony/framework-bundle": "^3.4 || ^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.2",
-        "symfony/symfony": "~2.7|~3.0|~4.0"
+        "phpunit/phpunit": "^5.2",
+        "symfony/symfony": "^3.4 || ^4.0"
     },
+
     "autoload": {
         "psr-4": {
             "Fidry\\PsyshBundle\\": "src"
@@ -38,6 +41,7 @@
             "tests/Functional/AppKernel.php"
         ]
     },
+
     "config": {
         "bin-dir": "bin",
         "sort-packages": true
