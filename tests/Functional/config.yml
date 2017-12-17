@@ -1,9 +1,8 @@
 framework:
-    secret:                  PsyshBundleSecret
+    secret: PsyshBundleSecret
     router:
-        resource:            ~
-        strict_requirements: %kernel.debug%
-    trusted_proxies:         ~
-    test:                    ~
+        resource: ~
+        strict_requirements: '%kernel.debug%'
+    test: ~
     session:
-        storage_id:          session.storage.mock_file
+        storage_id: session.storage.mock_file

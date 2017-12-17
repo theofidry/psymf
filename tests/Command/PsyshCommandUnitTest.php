@@ -11,6 +11,7 @@
 
 namespace Fidry\PsyshBundle\Command;
 
+use PHPUnit\Framework\TestCase;
 use Psy\Shell;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,7 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class PsyshCommandUnitTest extends \PHPUnit_Framework_TestCase
+class PsyshCommandUnitTest extends TestCase
 {
     public function testIsASymfonyCommand()
     {

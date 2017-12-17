@@ -11,11 +11,11 @@
             </call>
         </service>
 
-        <service id="psysh.shell" class="Psy\Shell" public="false">
+        <service id="psysh.shell" class="Psy\Shell" public="true">
             <argument type="service" id="psysh.config" />
         </service>
 
-        <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand">
+        <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand" public="true">
             <argument type="service" id="psysh.shell" />
             <tag name="console.command" />
         </service>
