@@ -9,20 +9,28 @@ branches:
     - master
 
 php:
-    - '5.6'
-    - '7.0'
     - '7.1'
+    - '7.2'
     - nightly
 
 matrix:
     fast_finish: true
     include:
-        - php: '5.6'
+        - php: '7.2'
           env:
               - COMPOSER_FLAGS='--prefer-lowest'
-              - SYMFONY_VERSION='~2.7.0'
+              - SYMFONY_VERSION='~3.4.0'
+        - php: '7.2'
+          env: SYMFONY_VERSION='~4.0.0'
+        - php: '7.2'
+          env: SYMFONY_VERSION='~4.1.0@dev'
     allow_failures:
         - php: nightly
+        - env: SYMFONY_VERSION='~4.1.0@dev'
+
+before_install:
+    - set -eo pipefail
+    - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 install:
     - phpenv config-rm xdebug.ini || true
