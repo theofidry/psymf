@@ -35,6 +35,16 @@ final class PsyshExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../../resources/config'));
         $loader->load('services.xml');
+        $paths = [
+            __DIR__ . '/../../../../symfony/framework-bundle/Resources/config/test.xml',
+            __DIR__ . '/../../vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/test.xml'
+        ];
+        foreach ($paths as $path) {
+            if (file_exists($path)) {
+                $loader->load($path);
+                break;
+            }
+        }
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -43,12 +53,13 @@ final class PsyshExtension extends Extension
                 $value = new Reference(substr($value, 1));
             }
         }
+        $containerId = $container->has('test.service_container') ? 'test.service_container' : 'service_container';
         $container->findDefinition('psysh.shell')
             ->addMethodCall('setScopeVariables', [$config['variables'] + [
-                'container' => new Reference('service_container'),
+                'container' => new Reference($containerId),
                 'kernel' => new Reference('kernel'),
                 'self' => new Reference('psysh.shell'),
-                'parameters' => new Expression("service('service_container').getParameterBag().all()")
+                'parameters' => new Expression(sprintf("service('%s').getParameterBag().all()", $containerId))
             ]]);
         
         // Register Psysh commands for service autoconfiguration (Symfony 3.3+)

@@ -61,6 +61,16 @@ class PsyshCommandIntegrationTest extends KernelTestCase
         );
     }
 
+    public function testContainerInstance()
+    {
+        $container = $this->shell->getScopeVariable('container');
+        if (in_array(getenv('SYMFONY_VERSION'), ['~3.4.0', '~4.0.0'], true)) {
+            $this->assertInstanceOf('Symfony\Component\DependencyInjection\Container', $container);
+        } else {
+            $this->assertInstanceOf('Symfony\Bundle\FrameworkBundle\Test\TestContainer', $container);
+        }
+    }
+
     public function testFindShell()
     {
         $application = new Application(self::$kernel);
