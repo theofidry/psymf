@@ -65,6 +65,9 @@ php bin/console psysh
 
 # Symfony < 3.0
 php app/console psysh
+
+# Symfony > 4.0
+bin/console psysh
 ```
 
 or

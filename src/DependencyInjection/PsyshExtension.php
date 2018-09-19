@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -35,15 +36,8 @@ final class PsyshExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../../resources/config'));
         $loader->load('services.xml');
-        $paths = [
-            __DIR__ . '/../../../../symfony/framework-bundle/Resources/config/test.xml',
-            __DIR__ . '/../../vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/test.xml'
-        ];
-        foreach ($paths as $path) {
-            if (file_exists($path)) {
-                $loader->load($path);
-                break;
-            }
+        if (class_exists(TestContainer::class) && !$container->has('test.service_container')) {
+            $loader->load('test.xml');
         }
 
         $configuration = new Configuration();
