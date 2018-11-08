@@ -43,7 +43,6 @@ final class PsyshCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('psysh')
             ->setDescription('Start PsySH for Symfony');
     }
 
