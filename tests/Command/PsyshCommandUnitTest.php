@@ -37,7 +37,6 @@ class PsyshCommandUnitTest extends TestCase
         $shell = $shellProphecy->reveal();
 
         $command = new PsyshCommand($shell);
-        $this->assertEquals('psysh', $command->getName());
         $this->assertEquals('Start PsySH for Symfony', $command->getDescription());
     }
 
