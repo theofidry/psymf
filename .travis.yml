@@ -16,6 +16,10 @@ php:
 matrix:
     fast_finish: true
     include:
+        - php: '7.1'
+          env:
+            - COMPOSER_FLAGS='--prefer-lowest'
+            - SYMFONY_VERSION='~4.3.0'
         - php: '7.2'
           env: SYMFONY_VERSION='~4.3.0'
     allow_failures:
