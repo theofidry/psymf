@@ -37,7 +37,7 @@ class PsyshCommandIntegrationTest extends KernelTestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         self::bootKernel();
 
@@ -47,7 +47,7 @@ class PsyshCommandIntegrationTest extends KernelTestCase
 
     public function testScopeVariables()
     {
-        $this->assertEquals(
+        $this->assertEqualsCanonicalizing(
             [
                 'container',
                 'kernel',
@@ -56,10 +56,7 @@ class PsyshCommandIntegrationTest extends KernelTestCase
                 'self',
             ],
             array_keys($this->shell->getScopeVariables()),
-            'Expected shell service to have scope variables',
-            0.0,
-            10,
-            true
+            'Expected shell service to have scope variables'
         );
     }
 
