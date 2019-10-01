@@ -63,7 +63,7 @@ class PsyshCommandIntegrationTest extends KernelTestCase
     public function testContainerInstance()
     {
         $container = $this->shell->getScopeVariable('container');
-        if (class_exists(TestContainer::class)) {
+        if (self::$kernel->getContainer()->has('test.service_container')) {
             $this->assertInstanceOf(TestContainer::class, $container);
         } else {
             $this->assertInstanceOf(Container::class, $container);
