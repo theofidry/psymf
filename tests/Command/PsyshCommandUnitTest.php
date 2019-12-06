@@ -43,7 +43,7 @@ class PsyshCommandUnitTest extends TestCase
     public function testExecute()
     {
         $shellProphecy = $this->prophesize(Shell::class);
-        $shellProphecy->run()->shouldBeCalled();
+        $shellProphecy->run()->shouldBeCalled()->willReturn(1);
         /* @var Shell $shell */
         $shell = $shellProphecy->reveal();
 
