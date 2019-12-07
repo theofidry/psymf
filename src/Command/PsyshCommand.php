@@ -51,6 +51,6 @@ final class PsyshCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->shell->run();
+        return $this->shell->run();
     }
 }
