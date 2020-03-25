@@ -9,19 +9,19 @@ branches:
     - master
 
 php:
-    - '7.2'
-    - nightly
+    - '7.3'
+    - '7.4'
 
 matrix:
     fast_finish: true
     include:
-        - php: '7.2'
+        - php: '7.3'
           env:
               - COMPOSER_FLAGS='--prefer-lowest'
               - SYMFONY_VERSION='~4.4.0'
-        - php: '7.2'
+        - php: '7.3'
           env: SYMFONY_VERSION='~4.4.0'
-        - php: '7.2'
+        - php: '7.3'
           env: SYMFONY_VERSION='^5.0'
     allow_failures:
         - php: nightly

@@ -42,15 +42,14 @@ final class PsyshCommand extends Command
      */
     protected function configure()
     {
-        $this
-            ->setDescription('Start PsySH for Symfony');
+        $this->setDescription('Start PsySH for Symfony');
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return $this->shell->run();
+        return (int) $this->shell->run();
     }
 }
