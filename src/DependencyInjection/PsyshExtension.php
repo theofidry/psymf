@@ -55,10 +55,7 @@ final class PsyshExtension extends Extension
                 'self' => new Reference('psysh.shell'),
                 'parameters' => new Expression(sprintf("service('%s').getParameterBag().all()", $containerId))
             ]]);
-        
-        // Register Psysh commands for service autoconfiguration (Symfony 3.3+)
-        if (method_exists($container, 'registerForAutoconfiguration')) {
-            $container->registerForAutoconfiguration(Command::class)->addTag('psysh.command');
-        }
+
+        $container->registerForAutoconfiguration(Command::class)->addTag('psysh.command');
     }
 }

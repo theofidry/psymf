@@ -22,7 +22,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('psysh');
-        $rootNode = \method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('psysh');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
