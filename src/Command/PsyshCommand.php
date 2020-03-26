@@ -11,7 +11,7 @@
 
 namespace Fidry\PsyshBundle\Command;
 
-use Psy\Shell;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,13 +22,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class PsyshCommand extends Command
 {
-    private $shell;
+    private $psysh;
 
-    public function __construct(Shell $shell)
+    public function __construct(Application $shell)
     {
         parent::__construct();
 
-        $this->shell = $shell;
+        $this->psysh = $shell;
     }
 
     protected function configure(): void
@@ -38,6 +38,6 @@ final class PsyshCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return (int) $this->shell->run();
+        return (int) $this->psysh->run($input, $output);
     }
 }
