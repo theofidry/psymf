@@ -25,6 +25,15 @@
                 <argument type="service" id="test.service_container" />
             </call>
         </service>
+
+        <service id="test.service_container" class="Symfony\Bundle\FrameworkBundle\Test\TestContainer" public="true">
+            <argument type="service" id="kernel" />
+            <argument>test.private_services_locator</argument>
+        </service>
+
+        <service id="test.private_services_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="true">
+            <argument type="collection" />
+        </service>
     </services>
 
 </container>

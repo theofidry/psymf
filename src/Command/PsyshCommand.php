@@ -24,11 +24,11 @@ final class PsyshCommand extends Command
 {
     private $psysh;
 
-    public function __construct(Application $shell)
+    public function __construct(Application $psysh)
     {
         parent::__construct();
 
-        $this->psysh = $shell;
+        $this->psysh = $psysh;
     }
 
     protected function configure(): void

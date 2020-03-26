@@ -30,7 +30,7 @@ class PsyshBundleTest extends KernelTestCase
 
         $this->assertInstanceOf(
             Shell::class,
-            static::$kernel->getContainer()->get('psysh.shell')
+            static::$container->get('psysh.shell')
         );
     }
 }

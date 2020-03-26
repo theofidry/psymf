@@ -12,10 +12,8 @@
 namespace Fidry\PsyshBundle\DependencyInjection;
 
 use Psy\Command\Command;
-use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\ExpressionLanguage\Expression;
@@ -35,16 +33,9 @@ use function substr;
  *
  * @private
  */
-final class PsyshExtension extends Extension implements PrependExtensionInterface
+final class PsyshExtension extends Extension
 {
     private const CONFIG_DIR = __DIR__.'/../../resources/config';
-
-    public function prepend(ContainerBuilder $container): void
-    {
-        if (class_exists(TestContainer::class)) {
-            $container->prependExtensionConfig('framework', ['test' => true]);
-        }
-    }
 
     /**
      * {@inheritdoc}
