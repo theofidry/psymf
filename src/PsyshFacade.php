@@ -19,8 +19,6 @@ use function array_merge;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
- *
- * @private
  */
 final class PsyshFacade implements ContainerAwareInterface
 {
