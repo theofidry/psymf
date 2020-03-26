@@ -67,7 +67,7 @@ bin/console psysh
 or
 
 ```php
-use function Fidry\PsyshBundle\psysh
+use function psysh
 
 class X
 {
