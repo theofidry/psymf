@@ -17,7 +17,7 @@
     ],
 
     "require": {
-        "php": "^7.3|^8.0",
+        "php": ">=7.3",
         "psy/psysh": "^0.10",
         "symfony/error-handler": "^5.0|^4.4",
         "symfony/expression-language": "^5.0|^4.4",
