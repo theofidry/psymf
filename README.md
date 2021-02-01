@@ -39,7 +39,8 @@ You can use [Composer](https://getcomposer.org/) to install the bundle to your p
 composer require --dev theofidry/psysh-bundle
 ```
 
-Then, enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:
+Then, enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:  
+(not needed on symfony 5, bundle is automaticaly registred in `config/bundles.php`)
 ```php
 <?php
 // app/AppKernel.php
