@@ -29,6 +29,8 @@ final class PsyshCommand extends Command
         parent::__construct();
 
         $this->psysh = $psysh;
+        
+        return 0;
     }
 
     protected function configure(): void
