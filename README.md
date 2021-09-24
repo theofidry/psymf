@@ -102,7 +102,7 @@ Or even simpler if you use Symfony 3.3+:
 ```yaml
 services:
     _defaults:
-        autonfigure: true
+        autoconfigure: true
         autowire: true
         public: false
 
@@ -114,7 +114,7 @@ services:
 
 ### Adding custom variables
 It is possible to add custom variables to the shell via configuration.
-Variables can be of any type, container parameters references (e.g. `%kernel.debug`) or even services
+Variables can be of any type, container parameters references (e.g. `%kernel.debug%`) or even services
 (prefixed with `@`, e.g. `"@my_service"`).
 
 ```yaml
@@ -151,5 +151,5 @@ This bundle is developed by [Théo FIDRY](https://github.com/theofidry). This pr
 * [Adrian Palmer](https://github.com/navitronic): gave the lead for porting [PsySH][1] on [Symfony][2]
 
 
-[1]: http://psysh.org/
-[2]: http://symfony.com/
+[1]: https://psysh.org/
+[2]: https://symfony.com/
