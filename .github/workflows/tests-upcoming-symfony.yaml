@@ -28,7 +28,7 @@ jobs:
                   ini-values: date.timezone=UTC
 
             - name: 'Configure Symfony version'
-              run: composer bin symfony require --dev --no-update "symfony/symfony:${{ matrix.variant }}"
+              run: composer require --dev --no-update "symfony/symfony:${{ matrix.variant }}"
 
             - name: 'Install project dependencies'
               run: composer install --prefer-dist --prefer-stable
