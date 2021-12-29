@@ -22,30 +22,24 @@ use function array_merge;
  */
 final class PsyshFacade implements ContainerAwareInterface
 {
-    /**
-     * @var Shell
-     */
-    private static $shell;
+    private static Shell $shell;
 
-    /**
-     * @var ContainerInterface|null
-     */
-    private static $container;
+    private static ContainerInterface $container;
 
     public static function init(): void
     {
-        if (null !== self::$shell) {
+        if (isset(self::$shell)) {
             return;
         }
 
-        if (null === self::$container) {
+        if (!isset(self::$container)) {
             throw new RuntimeException('Cannot initialize the facade without a container.');
         }
 
         self::$shell = self::$container->get('psysh.shell');
     }
 
-    public static function debug(array $variables = [], $bind = null)
+    public static function debug(array $variables = [], $bind = null): void
     {
         self::init();
 

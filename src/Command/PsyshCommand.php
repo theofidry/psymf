@@ -22,15 +22,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class PsyshCommand extends Command
 {
-    private $psysh;
+    private Application $psysh;
 
     public function __construct(Application $psysh)
     {
         parent::__construct();
 
         $this->psysh = $psysh;
-        
-        return 0;
     }
 
     protected function configure(): void
@@ -40,6 +38,6 @@ final class PsyshCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return (int) $this->psysh->run($input, $output);
+        return $this->psysh->run($input, $output);
     }
 }

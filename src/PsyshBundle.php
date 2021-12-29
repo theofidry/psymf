@@ -40,7 +40,7 @@ final class PsyshBundle extends Bundle
         $container->addCompilerPass(
             new AddPsyshCommandPass(),
             PassConfig::TYPE_BEFORE_OPTIMIZATION,
-            10
+            10,
         );
     }
 }

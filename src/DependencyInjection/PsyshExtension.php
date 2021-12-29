@@ -42,15 +42,20 @@ final class PsyshExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(self::CONFIG_DIR));
+        $loader = new Loader\XmlFileLoader(
+            $container,
+            new FileLocator(self::CONFIG_DIR),
+        );
         $loader->load('services.xml');
 
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        foreach ($config['variables'] as $name => &$value) {
+        foreach ($config['variables'] as $name => $value) {
             if (is_string($value) && strpos($value, '@') === 0) {
                 $value = new Reference(substr($value, 1));
             }
+
+            $config['variables'][$name] = $value;
         }
 
         $containerId = 'test.service_container';
