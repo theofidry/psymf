@@ -1,0 +1,51 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
+			count: 1
+			path: src/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Method Fidry\\\\PsyshBundle\\\\PsyshFacade\\:\\:debug\\(\\) has parameter \\$bind with no type specified\\.$#"
+			count: 1
+			path: src/PsyshFacade.php
+
+		-
+			message: "#^Method Fidry\\\\PsyshBundle\\\\PsyshFacade\\:\\:debug\\(\\) has parameter \\$variables with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/PsyshFacade.php
+
+		-
+			message: "#^Static property Fidry\\\\PsyshBundle\\\\PsyshFacade\\:\\:\\$container \\(Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\) does not accept Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
+			count: 1
+			path: src/PsyshFacade.php
+
+		-
+			message: "#^Static property Fidry\\\\PsyshBundle\\\\PsyshFacade\\:\\:\\$shell \\(Psy\\\\Shell\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: src/PsyshFacade.php
+
+		-
+			message: "#^Function psysh\\(\\) has parameter \\$bind with no type specified\\.$#"
+			count: 1
+			path: src/psysh.php
+
+		-
+			message: "#^Function psysh\\(\\) has parameter \\$variables with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/psysh.php
+
+		-
+			message: "#^Property Fidry\\\\PsyshBundle\\\\Command\\\\PsyshCommandIntegrationTest\\:\\:\\$command \\(Fidry\\\\PsyshBundle\\\\Command\\\\PsyshCommand\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Command/PsyshCommandIntegrationTest.php
+
+		-
+			message: "#^Property Fidry\\\\PsyshBundle\\\\Command\\\\PsyshCommandIntegrationTest\\:\\:\\$shell \\(Psy\\\\Shell\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Command/PsyshCommandIntegrationTest.php
+
+		-
+			message: "#^Method Fidry\\\\PsyshBundle\\\\Functional\\\\AppKernel\\:\\:registerBundles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/AppKernel.php

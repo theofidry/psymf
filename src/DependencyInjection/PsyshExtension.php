@@ -42,11 +42,11 @@ final class PsyshExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new Loader\XmlFileLoader(
+        $loader = new Loader\YamlFileLoader(
             $container,
             new FileLocator(self::CONFIG_DIR),
         );
-        $loader->load('services.xml');
+        $loader->load('services.yaml');
 
         $config = $this->processConfiguration(new Configuration(), $configs);
 

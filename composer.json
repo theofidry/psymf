@@ -17,13 +17,19 @@
     ],
 
     "require": {
-        "php": ">=8.0",
+        "php": ">=7.4",
+        "ext-json": "*",
         "psy/psysh": "^0.11",
         "symfony/error-handler": "^5.4|^6.0",
         "symfony/expression-language": "^5.4|^6.0",
-        "symfony/framework-bundle": "^5.4|^6.0"
+        "symfony/finder": "^6.2",
+        "symfony/framework-bundle": "^5.4|^6.0",
+        "symfony/polyfill-php80": "^1.27"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "monolog/monolog": "^3.3",
+        "phpstan/phpstan": "^1.9",
         "phpunit/phpunit": "^9.5",
         "symfony/symfony": "^5.4|^6.0"
     },
@@ -40,6 +46,13 @@
         "psr-4": {
             "Fidry\\PsyshBundle\\": "tests"
         }
+    },
+
+    "scripts": {
+        "phpcs": "bin/php-cs-fixer fix --dry-run --diff",
+        "phpstan": "bin/phpstan analyse --memory-limit 512M",
+        "phpcs-fix": "bin/php-cs-fixer fix",
+        "tests": "bin/phpunit"
     },
 
     "config": {
