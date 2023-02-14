@@ -1,0 +1,36 @@
+services:
+    Psy\Configuration:
+        calls:
+            - setHistoryFile: ['%kernel.cache_dir%/psysh_history']
+
+    psysh.shell:
+        class: Psy\Shell
+        arguments:
+            - '@Psy\Configuration'
+
+    psysh.command.shell_command:
+        class: Fidry\PsyshBundle\Command\PsyshCommand
+        public: true
+        arguments:
+            - '@psysh.shell'
+        tags:
+            - { name: console.command, command: psysh }
+
+    psysh.facade:
+        class: Fidry\PsyshBundle\PsyshFacade
+        public: true
+        calls:
+            - setContainer: ['@test.service_container']
+
+    test.service_container:
+        class: Symfony\Bundle\FrameworkBundle\Test\TestContainer
+        public: true
+        arguments:
+            - '@kernel'
+            - 'test.private_services_locator'
+
+    test.private_services_locator:
+        class: Symfony\Component\DependencyInjection\ServiceLocator
+        public: true
+        arguments:
+            - []
