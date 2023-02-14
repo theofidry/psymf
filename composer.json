@@ -18,9 +18,11 @@
 
     "require": {
         "php": ">=7.4",
+        "ext-json": "*",
         "psy/psysh": "^0.11",
         "symfony/error-handler": "^5.4|^6.0",
         "symfony/expression-language": "^5.4|^6.0",
+        "symfony/finder": "^6.2",
         "symfony/framework-bundle": "^5.4|^6.0",
         "symfony/polyfill-php80": "^1.27"
     },

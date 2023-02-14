@@ -1,4 +1,16 @@
 services:
+    command.service:
+        class: Fidry\PsyshBundle\Command\ServiceCommand
+        arguments:
+            - '@kernel'
+        tags:
+            - { name: psysh.command }
+
+    command.instance:
+        class: Fidry\PsyshBundle\Command\InstanceCommand
+        tags:
+            - { name: psysh.command }
+
     Psy\Configuration:
         calls:
             - setHistoryFile: ['%kernel.cache_dir%/psysh_history']

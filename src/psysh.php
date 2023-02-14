@@ -9,10 +9,30 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle
-{
+use Fidry\PsyshBundle\Command\InstanceCommand;
+use Fidry\PsyshBundle\Command\ServiceCommand;
+use Fidry\PsyshBundle\PsyshFacade;
+
+if (!function_exists('psysh')) {
     function psysh(array $variables = [], $bind = null): void
     {
         PsyshFacade::debug($variables, $bind);
+    }
+}
+
+if (!function_exists('resolved_service')) {
+    function resolved_service(string $identifier): object
+    {
+        return ServiceCommand::resolvedService($identifier);
+    }
+}
+
+if (!function_exists('resolved_class')) {
+    /**
+     * @param class-string $className
+     */
+    function resolved_class($className): object
+    {
+        return InstanceCommand::resolvedClassName($className);
     }
 }
