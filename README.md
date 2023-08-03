@@ -39,7 +39,7 @@ You can use [Composer](https://getcomposer.org/) to install the bundle to your p
 composer require --dev theofidry/psysh-bundle
 ```
 
-Then, enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:  
+Then, enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:
 (not needed on symfony 5, bundle is automaticaly registred in `config/bundles.php`)
 ```php
 <?php
@@ -115,10 +115,13 @@ services:
 ### Adding custom variables
 It is possible to add custom variables to the shell via configuration.
 Variables can be of any type, container parameters references (e.g. `%kernel.debug%`) or even services
-(prefixed with `@`, e.g. `"@my_service"`).
+(prefixed with `@`, e.g. `"@my_service"`). An arbitrary evaluated expression can be specified as a
+string enclosed with `{` and `}`, though keep in mind that malformed expressions will prevent Psysh
+from loading. In an evaluated expression, the special token `%containerId` can be used to access the
+container itself, by using `service('%containerId')`.
 
 ```yaml
-# app/config/config_dev.yml
+# config/packages/psysh.yaml
 
 psysh:
     variables:
@@ -126,6 +129,7 @@ psysh:
         router: "@router"
         some: [thing, else]
         debug: "%kernel.debug%"
+        doctrine: "{service('%containerId').get('doctrine')}"
 ```
 
 Now if you run `php app/console psysh` and then `ls`, you will see the variables `$foo`, `$router`, `$some` and `$debug`,

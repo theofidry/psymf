@@ -20,6 +20,7 @@ use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use function array_merge;
 use function is_string;
+use function preg_replace;
 use function sprintf;
 use function strpos;
 use function substr;
@@ -50,15 +51,20 @@ final class PsyshExtension extends Extension
 
         $config = $this->processConfiguration(new Configuration(), $configs);
 
+        $containerId = 'test.service_container';
+
         foreach ($config['variables'] as $name => $value) {
-            if (is_string($value) && strpos($value, '@') === 0) {
-                $value = new Reference(substr($value, 1));
+            if (is_string($value)) {
+                if (strpos($value, '@') === 0) {
+                    $value = new Reference(substr($value, 1));
+                } else if (strpos($value, '{') === 0) {
+                    $expression = preg_replace('/%containerId\b/', $containerId, substr($value, 1, -1));
+                    $value = new Expression($expression);
+                }
             }
 
             $config['variables'][$name] = $value;
         }
-
-        $containerId = 'test.service_container';
 
         $container
             ->findDefinition('psysh.shell')
