@@ -21,8 +21,8 @@
         </service>
 
         <service id="psysh.facade" class="Fidry\PsyshBundle\PsyshFacade" public="true">
-            <call method="setContainer">
-                <argument type="service" id="test.service_container" />
+            <call method="setShell">
+                <argument type="service" id="psysh.shell" />
             </call>
         </service>
 
