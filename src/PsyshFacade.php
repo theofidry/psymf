@@ -37,7 +37,7 @@ final class PsyshFacade
 
         $_variables = array_merge(self::$shell->getScopeVariables(), $variables);
 
-        self::$shell::debug($_variables, $bind);
+        \Psy\debug($_variables, $bind);
     }
 
     public function setShell(Shell $shell): void
