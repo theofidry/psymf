@@ -14,6 +14,18 @@ jobs:
                 symfony-version:
                   - '^5.4'
                   - '^6.0'
+                  - '^7.0'
+                php-version:
+                  - '8.0'
+                  - '8.1'
+                  - '8.2'
+                exclude:
+                    - symfony-version: '^5.4'
+                      php-version: '8.2'
+                    - symfony-version: '^7.0'
+                      php-version: '8.0'
+                    - symfony-version: '^7.0'
+                      php-version: '8.1'
         steps:
             - name: 'Checkout code'
               uses: actions/checkout@v2.3.3
@@ -22,13 +34,13 @@ jobs:
               uses: shivammathur/setup-php@2.7.0
               with:
                   coverage: none
-                  php-version: '8.0'
+                  php-version: ${{ matrix.php-version }}
                   tools: composer:v2
                   extensions: mbstring
                   ini-values: date.timezone=UTC
 
             - name: 'Configure Symfony version'
-              run: composer require --dev --no-update "symfony/symfony:${{ matrix.symfony-version }}"
+              run: composer require --dev --no-update "symfony/yaml:${{ matrix.symfony-version }}"
 
             - name: 'Install project dependencies'
               run: composer update --prefer-dist --prefer-stable
